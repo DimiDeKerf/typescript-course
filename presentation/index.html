@@ -1,0 +1,1493 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>TypeScript</title>
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/ordina.css" id="theme">
+    <link rel="stylesheet" href="css/custom.css">
+
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+
+    <script src="js/head.min.js"></script>
+    <!--Add support for earlier versions of Internet Explorer -->
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <img src="img/typescript.png" alt="TypeScript" style="vertical-align: bottom;" width="75.0%" />
+                <h3>Typed is the way</h3>
+            </section>
+
+            <section>
+                <h2>Hi, my name is Dimi.</h2>
+                <p>
+                    Developer
+                    <br /> Ordina Belgium
+                    <br /> https://github.com/DimiDeKerf
+                </p>
+            </section>
+
+            <section>
+                <section>
+                    <h1>JavaScript</h1>
+                </section>
+                <section data-background-image="img/javascript-good-parts.jpg">
+                </section>
+                <section>
+                    <h2>The not-so-good parts</h2>
+                    <p>JavaScript is weakly typed</p>
+                    <p>Type coercion</p>
+                    <p>Callback hell</p>
+                    <p>Refactoring</p>
+                </section>
+                <section>
+                    <h2>Weak typing</h2>
+                    <p></p>
+                    <pre><code class="javascript">
+var myNumber = 2;
+myNumber = '4';
+myNumber = true;
+                    </code></pre>
+                </section>
+                <section>
+                    <h2>Type coercion</h2>
+                    <p>When operands have a different type, JS tries to convert one of them so they are equal.</p>
+                    <pre><code class="javascript">
+var myNumber = 2;
+var myNotANumber = '4';
+console.log(myNumber + myNotANumber); // Will print '24'
+                    </code></pre>
+                </section>
+                <section>
+                    <h2>Callback hell</h2>
+                    <p>Dealing with a callback from a callback within a callback...</p>
+                    <img class="callback-hell" data-src="img/callback-hell.jpg" alt="Callback hell">
+                </section>
+                <section>
+                    <h2>Refactoring</h2>
+                    <p>Difficult to refactor JS code, not suitable for large scale apps.</p>
+                </section>
+                <section>
+                    <h2>ECMAScript 6</h2>
+                    <p>Solves a lot of issues and brings tons of new features, but still lacks typings and support by
+                        browsers...</p>
+                </section>
+                <section>
+                    <h2>Help me, TypeScript.<br>You're my only hope.</h2>
+                </section>
+            </section>
+
+            <section>
+                <section>
+                    <h1>TypeScript</h1>
+                </section>
+                <section>
+                    <h2>TypeScript</h2>
+                    <div class="flex">
+                        <img width="200" height="200" data-src="img/ts_logo.png" alt="TypeScript logo">
+                        <div class="text-left margin-left">
+                            <p>Superset of JavaScript</p>
+                            <p>Developed by Microsoft</p>
+                            <p>Open-source, object-oriented language</p>
+                            <p>Strongly typed</p>
+                            <p>Transpiles to JavaScript</p>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <h2>Superset of JavaScript</h2>
+                    <div class="flex">
+                        <div class="text-left margin-right">
+                            <p>TypeScript is JavaScript</p>
+                            <p>Shares same syntax and semantics</p>
+                            <p>Allows JavaScript to be used at scale</p>
+                        </div>
+                        <img class="ts-superset" width="300" height="300" data-src="img/ts_superset.png" alt="TypeScript superset">
+                    </div>
+                </section>
+                <section>
+                    <h2>Strongly typed</h2>
+                    <p>Define types for variables</p>
+                    <p>Code is more readable</p>
+                    <p>Refactor existing code with ease</p>
+                    <p>Detect errors at compile time</p>
+                    <p>Increase code quality</p>
+                    <p>Optional</p>
+                </section>
+                <section>
+                    <h2>Transpiles to JavaScript</h2>
+                    <p>TypeScript cannot be understood by JS engine</p>
+                    <p>Transpiled output of TypeScript is plain JavaScript</p>
+                    <p>Runs on any modern browser and JS engine like Node</p>
+                </section>
+            </section>
+
+            <section>
+                <section>
+                    <h1>Typed Script</h1>
+                </section>
+                <section>
+                    <h2>Using types</h2>
+                    <p>Define the type after a colon.</p>
+                    <code class="javascript"><span style="color:purple">const</span> name: <span style="color:blue">type</span>;</code>
+                    <pre><code class="javascript">
+const nameOfPerson: string = 'Luke';
+
+function getName(): string {
+    return nameOfPerson;
+}
+                    </code></pre>
+                </section>
+                <section>
+                    <h2>Boolean</h2>
+                    <p>Most simple type, <code>true</code> or <code>false</code>.</p>
+                    <pre><code class="javascript">
+const toggle: boolean = true;
+                    </code></pre>
+                </section>
+                <section>
+                    <h2>Number</h2>
+                    <p>Define numbers in decimal, hexadecimal, binary,... format.</p>
+                    <pre><code class="javascript">
+const decimal: number = 10;
+const hexaDecimal: number = 0x010;
+const binary: number = 0b0101;
+const octal: number = 0o010;
+                    </code></pre>
+                </section>
+                <section>
+                    <h2>String</h2>
+                    <p>For textual data, use the string type.</p>
+                    <pre><code class="javascript">
+const name: string = 'Luke';
+                    </code></pre>
+                </section>
+                <section>
+                    <h2>Template string</h2>
+                    <p>Useful for string interpolation.</p>
+                    <pre><code class="javascript">
+const name: string = 'Luke';
+
+const concatenatedString: string = 'The Force is with you, young ' + name 
+    + ', but you are not a Jedi yet';
+
+const templateString: string = `The Force is with you, young ${name},
+    but you are not a Jedi yet`;
+                    </code></pre>
+                </section>
+                <section>
+                    <h2>Array</h2>
+                    <p>Define a list of items.</p>
+                    <pre><code class="javascript">
+const heroes: string[] = ['Luke', 'Leia', 'Han'];
+
+const villains: Array&lt;string&gt; = ['Darth Vader', 'The Emperor', 'Boba Fett'];
+                    </code></pre>
+                </section>
+                <section>
+                    <h2>Enum</h2>
+                    <p>Name a numeric value for more readable code.</p>
+                    <pre><code class="javascript">
+enum Rank {
+    Padawan,
+    Knight,
+    Master
+};
+
+const myRank: Rank = Rank.Padawan;
+                    </code></pre>
+                </section>
+                <section>
+                    <h2>Enum</h2>
+                    <p>You can also assign a <code>string</code> to an Enum.</p>
+                    <pre><code class="javascript">
+enum Rank {
+    Padawan = 'padawan',
+    Knight = 'knight',
+    Master = 'master'
+};
+
+const myRank: Rank = Rank.Padawan;
+console.log(myRank); // Logs "padawan"
+                    </code></pre>
+                </section>
+                <section>
+                    <h2>Tuple</h2>
+                    <p>Declare the types of a fixed array, useful to create pairs.</p>
+                    <pre><code class="javascript">
+let nameAgePair: [string, number];
+nameAgePair = ['Luke', 19];
+nameAgePair = [19, 'Luke']; // Won't compile
+nameAgePair = ['Luke', 19, 'Tatooine']; // Won't compile either
+                    </code></pre>
+                </section>
+                <section>
+                    <h2>Null and Undefined</h2>
+                    <p>Subtype of all other types. Not useful on their own though...</p>
+                    <pre><code class="javascript">
+const u: undefined = undefined;
+
+const n: null = null;
+
+let myName: string = 'Luke';
+myName = null;
+                    </code></pre>
+                </section>
+                <section>
+                    <h2>Any</h2>
+                    <p>Opt-out of type-checking, can have any value.</p>
+                    <pre><code class="javascript">
+let myName: any = 'Luke';
+myName = 2;
+myName = true;
+                    </code></pre>
+                </section>
+                <section>
+                    <h2>Void</h2>
+                    <p>Opposite of any, no type at all.</p>
+                    <pre><code class="javascript">
+const unused: void = null;
+
+function sleep(): void {
+    console.log('Zzzz...');
+}
+                    </code></pre>
+                </section>
+                <section>
+                    <h2>Type Inference</h2>
+                    <p>Compiler infers type of variables, so you don't have to explicitly set the type yourself.</p>
+                    <pre><code class="javascript">
+const myName: string = 'Luke';
+
+const inferredName = 'Luke'; // Inferred as string
+                    </code></pre>
+                </section>
+            </section>
+
+            <section>
+                <section>
+                    <h1>Variable declaration</h1>
+                </section>
+                <section>
+                    <h2>Let</h2>
+                    <p>Use <code>let</code> to declare variables, without the negative effects of <code>var.</code></p>
+                    <pre><code class="javascript">
+let myName: string = 'Luke';
+myName = 'Han';
+                    </code></pre>
+                </section>
+                <section>
+                    <h2>Const</h2>
+                    <p>With <code>const</code>, the value of the variable cannot be changed once it has been set.</p>
+                    <pre><code class="javascript">
+const myName: string = 'Luke';
+myName = 'Han'; // Won't compile
+                    </code></pre>
+                </section>
+                <section>
+                    <h2>Destructuring</h2>
+                    <p>Destruct an object to unpack its values in distinct variables.</p>
+                    <pre><code class="javascript">
+const jedi = {
+    name: 'Luke',
+    age: 19
+};
+const {name, age} = jedi;
+console.log(`My name is ${name} and I am ${age} years old.`);
+                    </code></pre>
+                </section>
+                <section>
+                    <h2>Spread</h2>
+                    <p>Spread an array or object into another array/object.</p>
+                    <pre><code class="javascript">
+const oddNumbers = [1, 3, 5];
+const evenNumbers = [2, 4];
+
+const numbers = [...oddNumbers, ...evenNumbers]; // 1, 3, 5, 2, 4
+
+const padawan = {
+    name: 'Luke',
+    age: 19
+    rank: Rank.Padawan
+};
+
+const knight = {
+    ...padawan,
+    rank: Rank.Knight // Overwrite the rank, other properties will remain the same
+};
+                    </code></pre>
+                </section>
+            </section>
+
+            <section>
+                <section>
+                    <h1>Setup dev environment</h1>
+                </section>
+                <section>
+                    <h2>Prerequisites</h2>
+                    <p>Node & npm</p>
+                    <p>Editor of choice</p>
+                </section>
+                <section>
+                    <h2>Install TypeScript using npm</h2>
+                    <p>Run the following command</p>
+                    <pre><code>
+npm install -g typescript
+                    </code></pre>
+                    <p>Check if the TypeScript compiler is working</p>
+                    <pre><code>
+tsc -v
+                    </code></pre>
+                </section>
+                <section>
+                    <h2>Project configuration</h2>
+                </section>
+                <section>
+                    <h2>Compiler configuration</h2>
+                    <p>Running <code>tsc</code> will trigger the compiler with default settings.</p>
+                    <p>To set a custom configuration, you can use compiler flags <br/><code>tsc --target ES5 file.ts</code></p>
+                </section>
+                <section>
+                    <h2>tsconfig.json</h2>
+                    <p>Specifies compiler options, configures how the compiler will compile your project.</p>
+                    <p>Mostly located in the root of your project.</p>
+                </section>
+                <section>
+                    <h2>tsconfig.json</h2>
+                    <pre><code class="javascript">
+{
+    "compilerOptions": {
+        "module": "amd",
+        "noImplicitAny": true,
+        "removeComments": true,
+        "preserveConstEnums": true,
+        "sourceMap": true
+    }
+}                           
+                    </code></pre>
+                </section>
+                <section>
+                    <h2>TSLint</h2>
+                    <p>Static code analysis tool for TypeScript. Helps you to write more readable, maintainable code.</p>
+                    <p>Supported by most editors.</p>
+                </section>
+                <section>
+                    <h2>Deprecated</h2>
+                    <p>TSLint is deprecated in favour of ESLint.</p>
+                </section>
+                <section>
+                    <h2>ESLint setup</h2>
+                    <p>Configure ESLint using a <code>.eslintrc.js</code>file.</p>
+                </section>
+                <section>
+                    <h2>ESLint setup</h2>
+                    <p>Configuration depends on preferences, align with your team and organisation.</p>
+                </section> 
+                <section>
+                    <h2>Exercise 1: Basic project</h2>
+                    <p>Get familiar with the basic TypeScript syntax and project setup.</p>
+                </section>
+            </section>
+
+            <section>
+                <section>
+                    <h1>Functions</h1>
+                </section>
+                <section>
+                    <h2>Functions</h2>
+                    <p>Fundamental building block of JavaScript applications. Define how to perform a specific task.</p>
+                </section>
+                <section>
+                    <h2>Define a function</h2>
+                    <h4>Named function</h4>
+                    <pre><code class="javascript">
+function add(x: number, y: number): number {
+    return x + y;
+}
+                    </code></pre>
+                    <h4>Anonymous function</h4>
+                    <pre><code class="javascript">
+const add = function(x: number, y: number): number {
+    return x + y; 
+};
+                    </code></pre>
+                </section>
+                <section>
+                    <h2>Arrow function</h2>
+                    <p>Alternative way to declare anonymous functions. Also known as lambda functions in other languages.</p>
+                    <pre><code class="javascript">
+// With function keyword                        
+const add = function(x: number, y: number): number {
+    return x + y; 
+};
+
+// With fat arrow
+const addArrow = (x: number, y: number): number => {
+    return x + y; 
+};
+                    </code></pre>
+                </section>
+                <section>
+                    <h2>Arrow function</h2>
+                    <p>If the body of the function has only one statement, you can omit the curly brackets and <code>return</code> keyword.</p>
+                    <pre><code class="javascript">
+const addArrow = (x: number, y: number): number => x + y;
+
+// Same as
+
+const add = (x: number, y: number): number => {
+    return x + y; 
+};
+                    </code></pre>
+                </section>
+                <section>
+                    <h2>Optional params</h2>
+                    <p>Mark parameters optional with a ?</p>
+                    <pre><code class="javascript">
+function square(x: number, unit?: string): string {
+    const square = x * x;
+    if (unit != null) {
+        return `${square} ${unit}`;
+    } else {
+        return `${square}`;
+    }
+}
+
+console.log(square(2, 'm2')); // Prints 4 m2
+console.log(square(2)); // Prints 4
+                    </code></pre>
+                </section>
+                <section>
+                    <h2>Default-initialized params</h2>
+                    <p>Gives the parameter a default value when calling the function, if none is given.</p>
+                    <pre><code class="javascript">
+function square(x: number, unit = 'm2'): string {
+    const square = x * x;
+    return `${square} ${unit}`;
+}
+
+console.log(square(2)); // Prints 4 m2
+console.log(square(2, 'f2')); // Prints 4 f2
+                    </code></pre>
+                </section>
+                <section>
+                    <h2>Rest params</h2>
+                    <p>When you have no idea how many parameters a function will need, you can gather all parameters in Rest params.</p>
+                    <pre><code class="javascript">
+function add(...numbers: number): number {
+    const sum = 0;
+    for (let number of numbers) {
+        sum += number;
+    }
+    return sum;
+}
+
+console.log(add(2, 1, 4)); // Prints out 7
+                    </code></pre>
+                </section>
+            </section>
+
+            <section>
+                <section>
+                    <h1>Classes</h1>
+                </section>
+                <section>
+                    <h2>Classes</h2>
+                    <p>Object-oriented approach to write your application.</p>
+                </section>
+                <section>
+                    <h2>Class</h2>
+                    <pre><code class="javascript">
+class Jedi {
+    name: string;
+    amountOfLightsabers: number;
+
+    constructor(name: string, amountOfLightsabers: number) {
+        this.name = name;
+        this.amountOfLightsabers = age;
+    }
+
+    wield() {
+        console.log(`${this.name} wields ${this.amountOfLightsabers} lightsaber(s)`);
+    }
+}
+                    </code></pre>
+                </section>
+                <section>
+                    <h2>Access modifiers</h2>
+                    <p>Defines which properties and methods will be available to other classes.</p>
+                    <ul>
+                        <li><code>public</code></li>
+                        <li><code>protected</code></li>
+                        <li><code>private</code></li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>Public by default</h2>
+                    <p>All members are <code>public</code> accessible by default. You can still add the <code>public</code>
+                        modifier.</p>
+                    <pre><code class="javascript">
+class LightsaberWielder {
+    public name: string;
+    amountOfLightsabers: number; // Also public
+}
+                    </code></pre>
+                </section>
+                <section>
+                    <h2>Protected</h2>
+                    <p>Marks members as <code>protected</code> so they can't be accessed from outside the class, unless
+                        for
+                        subclasses.</p>
+                    <pre><code class="javascript">
+class LightsaberWielder {
+    public name: string;
+    protected amountOfLightsabers: number;
+
+    constructor(name: string, amountOfLightsabers: number) {
+        this.name = name;
+        this.amountOfLightsabers = amountOfLightsabers;
+    }
+}
+
+class Jedi extends LightsaberWielder {
+    wield() {
+        console.log('${name} is wielding ${amountOfLightsabers} saber(s).');
+    }
+}
+
+const obiWan = new Jedi('Obi-Wan', 1);
+obiWan.wield(); // Prints "Obi-wan is wielding 1 saber(s)."
+console.log(obiWan.amountOfLightsabers); // Compile error: 'amountOfLightsabers' is protected
+                        </code></pre>
+                </section>
+                <section>
+                    <h2>Private</h2>
+                    <p>Marks members as <code>private</code> so they can't be accessed from outside the class.</p>
+                    <pre><code class="javascript">
+class LightsaberWielder {
+    public name: string;
+    private amountOfLightsabers: number;
+
+    constructor(name: string, amountOfLightsabers: number) {
+        this.name = name;
+        this.amountOfLightsabers = amountOfLightsabers;
+    }
+}
+
+const obiWan = new LightsaberWielder('Obi-Wan', 1);
+console.log(obiWan.amountOfLightsabers); // Compile error: 
+                                        // 'amountOfLightsabers' is private
+                        </code></pre>
+                </section>
+                <section>
+                <h2>#private</h2>
+                    <p>ECMAScript's private fields that will remain private in transpiled JS</p>
+                    <p>Mark the fields as private with <code>#</code></p>
+                    <pre><code class="javascript">
+class LightsaberWielder {
+    name: string;
+    #amountOfLightsabers: number;
+
+    constructor(name: string, amountOfLightsabers: number) {
+        this.name = name;
+        this.#amountOfLightsabers = amountOfLightsabers;
+    }
+}
+
+const obiWan = new LightsaberWielder('Obi-Wan', 1);
+console.log(obiWan.amountOfLightsabers); // Compile error: 
+                                    // 'amountOfLightsabers' is private
+                        </code></pre>
+                </section>
+                <section>
+                    <h2>Which one to use?</h2>
+                    <p>It depends... If you don't want to expose your properties/functions from your API at all, go for # privates</p>
+                </section>
+                <section>
+                    <h2>Accessors</h2>
+                    <p>Have more control of how a member of an object is accessed by using the <code>get</code> and <code>set</code>
+                        accessors.</p>
+                    <pre><code class="javascript">
+class Jedi {
+    private _name?: string;
+
+    get name(): string {
+        if (this._name) {
+            return this._name;
+        } else {
+            return 'Unknown';
+        }
+    }
+
+    set name(newName: string) {
+        if (newName) {
+            // Uppercase first letter
+            this._name = newName.charAt(0).toUpperCase() + newName.slice(1);
+        } else {
+            this._name = newName;
+        }
+    }
+}
+
+const luke = new Jedi();
+console.log(luke.name); // Will print out 'Unknown';
+luke.name = 'luke';
+console.log(luke.name); // Will print out 'Luke';
+                        </code></pre>
+                </section>
+                <section>
+                    <h2>Inheritance</h2>
+                    <p>Derive a class from another class with the <code>extends</code> keyword.</p>
+                    <pre><code class="javascript">
+class LightsaberWielder {
+    name: string;
+    amountOfLightsabers: number;
+
+    constructor(name: string, amountOfLightsabers: number) {
+        this.name = name;
+        this.amountOfLightsabers = amountOfLightsabers;
+    }
+
+    wield() {
+        console.log(`${this.name} wields ${this.amountOfLightsabers} lightsaber(s)`);
+    };
+}
+
+class Jedi extends LightsaberWielder {
+    swing() { };
+}
+
+class Sith extends LightsaberWielder {
+    stab() { };
+}
+                    </code></pre>
+                </section>
+                <section>
+                    <h2>Abstract class</h2>
+                    <p>Base class that other classes can extend. An abstract class can't be instantiated by itself.</p>
+                    <pre><code class="javascript">
+abstract class LightsaberWielder {
+    name: string;
+    amountOfLightsabers: number
+}
+
+class Jedi extends LightsaberWielder {
+    // Implementation omitted...
+}
+
+const obiWan: LightsaberWielder; // Declaring an abstract class is just fine
+const obiWan = new LightsaberWielder(); // Compile error: 
+                            // create an instance of an abstract class
+const obiWan = new Jedi();
+                        </code></pre>
+                </section>
+                <section>
+                    <h2>Readonly</h2>
+                    <p>The property will be read only with the <code>readonly</code> keyword. Readonly properties must
+                        be initialized.</p>
+                    <pre><code class="javascript">
+class Jedi {
+    readonly name: string;
+    amountOfLightsabers: number;
+
+    constructor(name: string, amountOfLightsabers: number) {
+        this.name = name;
+        this.amountOfLightsabers = amountOfLightsabers;
+    }
+}
+
+const obiWan = new Jedi('Obi-Wan', 1);
+obiWan.amountOfLightsabers = 2; // All good
+obiWan.name = 'Obi-Wan Kenobi'; // Compile error: name is readonly
+                    </code></pre>
+                </section>
+                <section>
+                    <h2>Constructor assignment</h2>
+                    <p>Concise way to create and assign properties. Make sure to explicitly add the accessor in the
+                        constructor.</p>
+                    <pre><code class="javascript">
+class Jedi {
+    constructor(public name: string) { }
+}
+
+// Same as
+
+class Jedi {
+    public name: string
+
+    constructor(name: string) {
+        this.name = name;
+    }
+}
+                    </code></pre>
+                </section>
+                <section>
+                    <h2>Static properties</h2>
+                    <p>Static members are visible on the class itself and will be shared across all instances of that
+                        class.</p>
+                    <pre><code class="javascript">
+class Jedi {
+    static amountOfLightsabers = 1;
+}
+
+const luke = new Jedi();
+const obiWan = new Jedi();
+luke.amountOfLightsabers = 2;
+console.log(obiWan.amountOfLightsabers); // Will print 2
+                    </code></pre>
+                </section>
+                <section>
+                    <h2>Exercise 2 & 3</h2>
+                    <p>Fix the failing unit tests in a TypeScript way.</p>
+                </section>
+            </section>
+
+            <section>
+                <section>
+                    <h1>Interfaces</h1>
+                </section>
+                <section>
+                    <h2>Interface</h2>
+                    <p>Defines a contract in your application. Classes that implement an interface must follow the
+                        structure of that interface.</p>
+                </section>
+                <section>
+                    <h2>Interface</h2>
+                    <pre><code class="javascript">
+interface DeathStarPlan {
+    radius: number;
+    fireWhenReady: (boolean) => string;
+}
+
+class DeathStar implements DeathStarPlan {
+    radius: number;
+
+    fireWhenReady(ready: boolean): string {
+        if (ready) {
+            return 'Fire!';
+        } else {
+            return 'Powering up primary weapon...';
+        }
+    }
+}
+                    </code></pre>
+                </section>
+                <section>
+                    <h2>Model Interface</h2>
+                    <p>Use an interface to represent a model. Preferable way to create read-only models because no
+                        JavaScript
+                        code will be generated.</p>
+                    <pre><code class="javascript">
+interface Jedi {
+    name: string
+}
+
+function greet(jedi: Jedi) {
+    console.log(`Hello there, ${jedi.name}`)
+}
+
+const jedi: Jedi = { name: 'Luke' };
+greet(jedi);
+                    </code></pre>
+                </section>
+                <section>
+                    <h2>Optional properties</h2>
+                    <p>Mark properties optional inside an interface. Useful for config params.</p>
+                    <pre><code class="javascript">
+interface DeathStarPlan {
+    radius?: number;
+    color?: string;
+}
+
+function assembleDeathStar(plan: DeathStarPlan) {
+    const deathStar = {};
+    if (plan.radius) {
+        deathStar.area = plan.radius * plan.radius * Math.PI;
+    } else {
+        deathStart.area = 0;
+    }
+    deathStart.color = plan.color;
+    return deathStar;
+}
+
+const deathStar = assembleDeathStar({ color: 'red' });
+                    </code></pre>
+                </section>
+                <section>
+                    <h2>Exercise 4</h2>
+                    <p>Complete the Walker app.</p>
+                </section>
+            </section>
+
+            <section>
+                <section>
+                    <h1>Optional chaining</h1>
+                </section>
+                <section>
+                    <h2>Undefined objects</h2>
+                    <p>Calling methods or properties of undefined objects leads to undesired results.</p>
+                    <pre><code class="javascript">
+const demolishedAlderaan = deathStar.superLaser.fire();
+// What if deathStar or superLaser is undefined?
+                    </code></pre>
+                </section>
+                <section>
+                    <h2>Optional chaining</h2>
+                    <p>Write code that stops running the expression when <code>null</code> or <code>undefined</code> is encountered.</p>
+                    <pre><code class="javascript">
+const demolishedAlderaan = deathStar?.superLaser?.fire();
+                    </code></pre>
+                </section>
+                <section>
+                    <h2>Optional chaining</h2>
+                    <pre><code class="javascript">
+// Before
+let demolishedAlderaan;
+if (deathStar != null && deathStar.superLaser != null) {
+    demolishedAlderaan = deathStar.superLaser.fire();
+}
+
+// After
+const demolishedAlderaan = deathStar?.superLaser?.fire();
+                    </code></pre>
+                </section>
+                <section>
+                    <h2>Nullish coalescing</h2>
+                    <p>If first value is null or undefined, use fall back value.</p>
+                    <pre><code class="javascript">                        
+const radius = deathStar.radius ?? 5000;
+                    </code></pre>
+                </section>
+                <section>
+                    <h2>Nullish coalescing</h2>
+                    <pre><code class="javascript">                        
+// Before
+const radius = deathStar.radius != null 
+    ? deathStar.radius
+    : 5000 ;
+
+// After
+const radius = deathStar.radius ?? 5000;
+                    </code></pre>
+                </section>
+            </section>
+
+            <section>
+                <section>
+                    <h1>Generics</h1>
+                </section>
+                <section>
+                    <h2>Generics</h2>
+                    <p>Building reusable components is key to develop flexible and scalable apps.</p>
+                    <p>Generics allow components to handle any kind of data instead of being restricted to a specific
+                        type.</p>
+                </section>
+                <section>
+                    <h2>Queue some names</h2>
+                    <pre><code class="javascript">
+class Queue {
+    private data = [];
+
+    push(item) {
+        this.data.push(item);
+    }
+
+    pop() {
+        return this.data.shift();
+    }
+}
+
+const nameQueue = new Queue();
+nameQueue.push('luke');
+nameQueue.push(123); // Oops, this won't be a valid name...
+
+console.log(`Hello there, my name is ${nameQueue.pop().toUpperCase()}`);
+console.log(`Hello there, my name is ${nameQueue.pop().toUpperCase()}`); 
+                    // Error: toUpperCase() is not a function
+                    </code></pre>
+                </section>
+                <section>
+                    <h2>Define a type</h2>
+                    <p>Set a type for our queue to only allow one type.</p>
+                    <pre><code class="javascript">
+class Queue {
+    private data: string[] = [];
+
+    push(item: string) {
+        this.data.push(item);
+    }
+
+    pop(): string {
+        return this.data.shift();
+    }
+}
+
+const nameQueue = new Queue();
+nameQueue.push('luke');
+nameQueue.push(123); // Compile error: Argument of type '123' is not assignable
+                    // to parameter of type 'string'...
+                    </code></pre>
+                    <p>But what if we want to have a queue of numbers, Persons, Cars,... ?</p>
+                </section>
+                <section>
+                    <h2>Generic queue</h2>
+                    <p>To only allow a predefined type to be added to our queue, we introduce a Generic.</p>
+                    <pre><code class="javascript">
+class Queue&lt;T&gt; {
+    private data: T[] = [];
+
+    push(item: T) {
+        this.data.push(item);
+    }
+
+    pop(): T {
+        return this.data.shift();
+    }
+}
+
+const nameQueue = new Queue&lt;string&gt;(); // Here we define the type as string
+nameQueue.push('luke');
+nameQueue.push(123); // Compile eror: Argument of type '123'
+                    // is not assignable to parameter of type 'string'...
+
+const numberQueue = new Queue&lt;number&gt;(); // Here we define the type as number
+numberQueue.push(123);
+                    </code></pre>
+                </section>
+                <section>
+                    <h2>Common usecase</h2>
+                    <p>Define type of data that will be returned from a Service.</p>
+                    <pre><code class="javascript">
+class Service&lt;T&gt; {
+    private data: T[] = [];
+
+    get(): T[] {
+        return this.data;
+    }
+
+    post(item: T): T {
+        return this.data.push(item);
+    }
+}
+
+const personService = new Service&lt;Person&gt;();
+const carService = new Service&lt;Car&gt;();
+                    </code></pre>
+                </section>
+            </section>
+
+            <section>
+                <section>
+                    <h1>Union type</h1>
+                </section>
+                <section>
+                    <h2>Union type</h2>
+                    <p>Defines several types that are allowed for a value.</p>
+                    <pre><code class="javascript">
+class XWing {
+    wings: number;
+}
+
+class TieFighter {
+    turrets: number;
+}
+
+class ATAT {
+    legs: number;
+}
+
+let starfighter: XWing | TieFighter;
+starfighter = new XWing();
+starfighter = new TieFighter();
+starfighter = new ATAT(); // Compile error: Type 'ATAT' is not assignable
+                          // to type 'XWing | TieFighter'.
+                    </code></pre>
+                </section>
+                <section>
+                    <h2>Union type with params</h2>
+                    <p>Allow several types as param for a function.</p>
+                    <pre><code class="javascript">
+class XWing { wings: number; }
+
+class ATAT { legs: number; }
+
+class RebelOutpost { hangars: number; }
+
+function getAmountOfAttachments(vehicle: XWing | ATAT): number {
+    if (vehicle instanceof XWing) {
+        return vehicle.wings;
+    } else {
+        return vehicle.legs;
+    }
+}
+
+getAmountOfAttachments(new XWing());
+getAmountOfAttachments(new ATAT());
+getAmountOfAttachments(new RebelOutpost()); // Compile error: Argument of type 
+            // 'RebelOutpost' is not assignable to parameter of type 'XWing | ATAT'.
+                    </code></pre>
+                </section>
+                <section>
+                    <h2>Type guard</h2>
+                    <p>TypeScript will be aware of the type inside the conditional block.</p>
+                    <pre><code class="javascript">
+class XWing { wings: number; }
+
+class ATAT { legs: number; }
+
+function getAmountOfAttachments(vehicle: XWing | ATAT): number {
+    console.log(vehicle.wings); // Compile error: Property 'wings' 
+                // does not exist on type 'ATAT'
+    if (vehicle instanceof XWing) {
+        return vehicle.wings;
+    } else {
+        return vehicle.legs; // Since vehicle isn't a XWing, it must be an ATAT
+    }
+}
+                    </code></pre>
+                </section>
+                <section>
+                    <h2>Write your own Type guards</h2>
+                    <p></p>
+                    <pre><code class="javascript">
+class XWing { wings: number; }
+
+class ATAT { legs: number; }
+
+function isXWing(vehicle: any): vehicle is XWing { // Returns a type predicate
+    return vehicle instanceof XWing;
+}
+
+function getAmountOfAttachments(vehicle: XWing | ATAT): number {
+    if (isXWing(vehicle)) {
+        return vehicle.wings;
+    } else {
+        return vehicle.legs;
+    }
+}
+                    </code></pre>
+                </section>
+            </section>
+
+            <section>
+                <section>
+                    <h1>Modules</h1>
+                </section>
+                <section>
+                    <h2>Global scope</h2>
+                    <p>All code is in global scope by default. Variables, functions, etc. are accessible from
+                        other files.</p>
+                </section>
+                <section>
+                    <h2>Modules</h2>
+                    <p>Organize code and prevent it from being accessible on the global scope by using modules.</p>
+                </section>
+                <section>
+                    <h2>Export</h2>
+                    <p>Export any declaration you want to expose by adding the export prefix.</p>
+                    <pre><code class="javascript">
+export interface DeathStarPlan {
+    radius: number;
+}
+
+interface SecretDeathStarPlan {
+    color: string;
+}
+                    </code></pre>
+                </section>
+                <section>
+                    <h2>Import</h2>
+                    <p>Import other modules with the import statement.</p>
+                    <pre><code class="javascript">
+import { DeathStarPlan } from 'path_to_interface';
+
+class DeathStar implements DeathStarPlan {
+    // Implementation...
+}
+                    </code></pre>
+                </section>
+                <section>
+                    <h2>Rename import statements</h2>
+                    <p>To prevent name collision or for cleaner code, you can rename the module that you're importing.</p>
+                    <pre><code class="javascript">
+import { DeathStarPlan as DeathStarBlueprint } from 'path_to_interface';
+import { DeathStarPlan as DeathStarScaffold } from 'path_to_other_interface';
+
+class DeathStar implements DeathStarBlueprint, DeathStarScaffold {
+    // Implementation...
+}
+                    </code></pre>
+                </section>
+                <section>
+                    <h2>Import * as</h2>
+                    <p>Imports all the exported declarations from another module into a single variable.</p>
+                    <pre><code class="javascript">
+// death-star-plan.ts
+
+export interface DeathStarPlan {
+    radius: number;
+}
+
+export const DEATH_STAR_1_RADIUS = 60;
+                    </code></pre>
+                    <pre><code class="javascript">
+// death-star.ts
+
+import * as DeathStarBlueprint from './deathstar-plan.ts';
+
+class DeathStar implements DeathStarBlueprint.DeathStarPlan {
+    radius = DeathStarBlueprint.DEATH_STAR_1_RADIUS;
+}
+                    </code></pre>
+                </section>
+                <section>
+                    <h2>Barrel</h2>
+                    <p>Collect all exports from several modules in a singe module. The barrel will re-export them
+                        to other modules. Common pattern in a lot of libraries.</p>
+                </section>
+                <section>
+                    <h2>Without a barrel</h2>
+                    <pre><code class="javascript">
+// death-star/death-star.ts                        
+export class DeathStar implements DeathStarPlan { }
+                    </code></pre>
+                    <pre><code class="javascript">
+// death-star/death-star-plan.ts
+export interface DeathStarPlan { }
+                    </code></pre>
+                    <pre><code class="javascript">
+// app.ts
+import { DeathStar } from './death-star/death-star';
+import { DeathStarPlan } from './death-star/death-star-plan';
+
+class App {}
+                    </code></pre>
+                </section>
+                <section>
+                    <h2>With a barrel</h2>
+                    <pre><code class="javascript">
+// death-star/index.ts                        
+export { DeathStar } from './death-star';
+export { DeathStarPlan } from './death-star-plan';
+                    </code></pre>
+                    <pre><code class="javascript">
+// app.ts
+import { DeathStar, DeathStarPlan } from './death-star';
+
+class App {}
+                    </code></pre>
+                </section>
+                <section>
+                    <h2>Exercise 4: Shipyard</h2>
+                    <p>Create multiple classes that interact with eachother.</p>
+                </section>
+            </section>
+
+            <section>
+                <section>
+                    <h1>Utility types</h1>
+                </section>
+                <section>
+                    <h2>Utility types</h2>
+                    <p>Global available types</p>
+                    <p>Bundle of common transformations</p>
+                </section>
+                <section>
+                    <h2>Partial</h2>
+                    <p>Marks all properties of given type as optional</p>
+                    <pre><code class="javascript">
+interface DeathStarPlan {
+    radius: number;
+    color: string;
+}
+
+const partialPlan: Partial&lt;DeathStarPlan&gt; = {
+    radius: 12
+} // radius and color is not mandatory
+                    </code></pre>
+                </section>
+                <section>
+                    <h2>Required</h2>
+                    <p>Opposite of Partial, makes all properties required</p>
+                    <pre><code class="javascript">
+interface DeathStarPlan {
+    radius?: number;
+    color?: string;
+}
+
+const requiredPlan: Required&lt;DeathStarPlan&gt; = {
+    radius: 12,
+    color: 'blue'
+} // even though DeathStarPlan has optional properties, the requiredPlan must provide both radius and color
+                    </code></pre>
+                </section>
+                <section>
+                    <h2>Readonly</h2>
+                    <p>Prevents properties for being re-assigned</p>
+                    <pre><code class="javascript">
+interface DeathStarPlan {
+    radius: number;
+    color: string;
+}
+
+const finalPlan: Readonly&lt;DeathStarPlan&gt; = {
+    radius: 12,
+    color: 'blue'
+}
+
+finalPlan.color = 'red'; // Won't compile
+                    </code></pre>
+                </section>
+                <section>
+                    <h2>Pick</h2>
+                    <p>Pick properties from the given type</p>
+                    <pre><code class="javascript">
+interface DeathStarPlan {
+    radius: number;
+    color: string;
+}
+
+const colorPlan: Pick&lt;DeathStarPlan, 'color'&gt; = {
+    color: 'red'
+}
+                    </code></pre>
+                </section>
+                <section>
+                    <h2>Omit</h2>
+                    <p>Omits properties from the given type</p>
+                    <pre><code class="javascript">
+interface DeathStarPlan {
+    radius: number;
+    color: string;
+}
+
+const colorPlan: Omit&lt;DeathStarPlan, 'radius'&gt; = {
+    color: 'red'
+}
+                    </code></pre>
+                </section>
+            </section>
+
+            <section>
+                <section>
+                    <h1>Promises</h1>
+                </section>
+                <section>
+                    <h2>Promise</h2>
+                    <p>Placeholder for a future value.</p>
+                    <p>Same as callbacks, but a cleaner solution to write asynchronous code.</p>
+                </section>
+                <section>
+                    <h2>Promise</h2>
+                    <p>Promise either resolves with a value or rejects with an error.</p>
+                    <pre><code class="javascript">
+function myAsyncCall(): Promise&lt;string&gt; {
+    return new Promise&lt;string&gt;((resolve, reject) => {
+        setTimeout(() => {
+            if (2 * 2 === 4) {
+                resolve('Hi');
+            } else {
+                reject(new Error('Oops!'));
+            }
+        }, 1000);
+    });
+}
+                        
+myAsyncCall()
+    .then(result => console.log('Received result', result))
+    .catch(error => console.error('Something went wrong...', error));
+                    </code></pre>
+                </section>
+                <section>
+                    <h2>Chain promises</h2>
+                    <p>Promises can be chained together.</p>
+                    <pre><code class="javascript">
+function printLightsaberColor(name: string) {
+    getJedi(name)
+        .then((jedi: Jedi) => getLightsaber(jedi.id))
+        .then((lightsaber: Lightsaber) => 
+            console.log('Color of lightsaber', lightsaber.color)
+        )
+        .catch((error: Error) => 
+            console.error('Something went wrong...', error.message)
+        );
+}                        
+                    </code></pre>
+                </section>
+                <section>
+                    <h2>async/await</h2>
+                    <p>Write your asynchronous code in a synchronous way.</p>
+                    <pre><code class="javascript">
+async function printLightsaberColor(name: string) {
+    try {
+        const jedi = await getJedi(name);
+        const ligthsaber = await getLightsaber(jedi.id);
+        console.log('Color of lightsaber', lightsaber.color);
+    } catch (error) {
+        console.error('Something went wrong...', error.message);
+    }
+} 
+                    </code></pre>
+                </section>
+            </section>
+
+            <section>
+                <section>
+                    <h1>Type definitions</h1>
+                </section>
+                <section>
+                    <h2>Type definitions</h2>
+                    <p>Community-driven collection of declaration files, covering over 90% of all JavaScript projects.</p>
+                    <p>Integrate JS libraries in your project and use its API with all TypeScript goodies.</p>
+                    <a href="http://definitelytyped.org/">http://definitelytyped.org/</a>
+                </section>
+                <section>
+                    <h2>How can I use it?</h2>
+                    <p>First get a definition from @types.</p>
+                    <pre><code class="javascript">
+npm install @types/jquery --save-dev
+                    </code></pre>
+                    <p>Afterwards you can access the definitions straight from your code.</p>
+                    <pre><code class="javascript">
+import * as $ from 'jquery';
+
+$('button').text('Click me!');
+                    </code></pre>
+                </section>
+            </section>
+
+            <section>
+                <section>
+                    <h1>Best practices</h1>
+                </section>
+                <section>
+                    <h2>Lowercase types</h2>
+                    <p>Keep in mind to lowercase types such as <code>number</code>, <code>string</code>,...</p>
+                    <pre><code class="javascript">
+const badTypedString: String = 'Uppercase primary types are bad';
+const goodTypedString: string = 'Be aware to lowercase primary types';
+                   </code></pre>
+                </section>
+                <section>
+                    <h2>Inference away!</h2>
+                    <p>Let the compiler do the work for you: infer the type instead of adding the type yourself.</p>
+                    <pre><code class="javascript">
+const randomText: string = 'Test';
+const inferedText = 'Test';
+                    </code></pre>
+                </section>
+                <section>
+                    <h2>Prevent any types</h2>
+                    <p>Use the <code>any</code> type as little as possible.</p>
+                </section>
+                <section>
+                    <h2>Strict mode</h2>
+                    <p>Forces you to use types, null checks,...</p>
+                </section>
+                <section>
+                    <h2>tslint</h2>
+                    <p>Get your code checked for best practices, readability,... before committing</p>
+                </section>
+                <section>
+                    <h2>Exercise 5: Web app</h2>
+                    <p>Develop a web app that communicates with an API.</p>
+                </section>
+            </section>
+
+            <section>
+                <section>
+                    <h1>Additional resources</h1>
+                </section>
+                <section>
+                    <h2>Additional resources</h2>
+                    <ul>
+                        <li>
+                            <a href="https://www.typescriptlang.org/docs/home.html">TypeScript documentation</a>
+                        </li>
+                        <li>
+                            <a href="https://www.typescriptlang.org/play/">TypeScript playground</a>
+                        </li>
+                        <li>
+                            <a href="https://app.pluralsight.com/library/courses/typescript">Pluralsight course</a>
+                        </li>
+                        <li>
+                            <a href="https://basarat.gitbooks.io/typescript/content/">TypeScript Deep Dive book</a>
+                        </li>
+                    </ul>
+                </section>
+            </section>
+
+            <!-- **********
+                DO NOT REMOVE
+            ********** -->
+            <section style="text-align: left;">
+                <h2>Thanks for watching!</h2>
+                <p class="fragment">May the Type be with you</p>
+            </section>
+
+            <section style="text-align: left;" data-background="img/jworks-wallpaper-3.jpg"></section>
+        </div>
+    </div>
+    <script src="js/reveal.js"></script>
+    <script>
+        Reveal.initialize({
+            transition: 'convex',
+            dependencies: [
+                // Cross-browser shim that fully implements classList - https://github.com/eligrey/classList.js/
+                {
+                    src: 'lib/js/classList.js',
+                    condition: function () {
+                        return !document.body.classList;
+                    }
+                },
+                // Interpret Markdown in <section> elements
+                {
+                    src: 'plugin/markdown/marked.js',
+                    condition: function () {
+                        return !!document.querySelector('[data-markdown]');
+                    }
+                },
+                {
+                    src: 'plugin/markdown/markdown.js',
+                    condition: function () {
+                        return !!document.querySelector('[data-markdown]');
+                    }
+                },
+                // Syntax highlight for <code> elements
+                {
+                    src: 'plugin/highlight/highlight.js',
+                    async: true,
+                    callback: function () {
+                        hljs.initHighlightingOnLoad();
+                    }
+                },
+                // Zoom in and out with Alt+click
+                {
+                    src: 'plugin/zoom-js/zoom.js',
+                    async: true
+                },
+                // Speaker notes
+                {
+                    src: 'plugin/notes/notes.js',
+                    async: true
+                }
+            ]
+        });
+    </script>
+</body>
+
+</html>

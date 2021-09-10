@@ -1,0 +1,30 @@
+{
+    "name": "hello_there",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "tsc --noEmit -p . && jest --no-cache"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "@types/jest": "^27.0.1",
+        "@types/node": "^16.7.10",
+        "jest": "^27.1.0",
+        "ts-jest": "^27.0.5",
+        "typescript": "^4.4.2"
+    },
+    "jest": {
+        "transform": {
+            ".(ts|tsx)": "ts-jest"
+        },
+        "testRegex": ".(ts|tsx|js)$",
+        "moduleFileExtensions": [
+            "ts",
+            "tsx",
+            "js"
+        ]
+    }
+}

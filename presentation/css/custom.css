@@ -1,0 +1,50 @@
+/**
+ * Custom styling for each presentation.
+ *
+ * Copyright (C) 2016 JWorks - http://www.ordina.be
+ */
+
+span.custom-blue {
+    color: rgb(55, 157, 248);
+}
+
+div.flex {
+    display: flex;
+}
+
+div.flex.center {
+    justify-content: center;
+    align-items: center;
+}
+
+div.text-left p {
+    text-align: left;
+}
+
+div.margin-left {
+    margin-left: 40px;
+}
+
+div.margin-right {
+    margin-right: 40px;
+}
+
+div.text-right p {
+    text-align: right;
+}
+
+img.ts-superset {
+    margin-left: 40px;
+}
+
+img.image-code {
+    object-fit: contain;
+    width: 50%;
+    height: 500px;
+}
+
+img.image-device {
+    object-fit: contain;
+    width: 50%;
+    height: 700px;
+}
